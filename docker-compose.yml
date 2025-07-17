@@ -1,0 +1,26 @@
+version: '3.9'
+services:
+  db:
+    image: postgres:14
+    container_name: wellness-db
+    environment:
+      POSTGRES_USER: <%= ENV['POSTGRES_USER'] %>
+      POSTGRES_PASSWORD: <%= ENV['POSTGRES_PASSWORD'] %>
+      POSTGRES_DB: <%= ENV['POSTGRES_NAME'] %>
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+  web:
+    build: .
+    depends_on:
+      - db
+    environment:
+      DATABASE_HOST: wellness-db
+    ports:
+      - "3000:3000"
+    command: ["bin/rails", "server", "-b", "0.0.0.0"]
+
+volumes:
+  pgdata:

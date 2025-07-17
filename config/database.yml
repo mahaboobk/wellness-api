@@ -1,0 +1,20 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  username: <%= ENV['POSTGRES_USER'] %>
+  password: <%= ENV['POSTGRES_PASSWORD'] %>
+  host: <%= ENV['POSTGRES_HOST'] %>  # <--- this must match the container name or service name in docker-compose
+  port: 5432
+  pool: <%= ENV['POSTGRES_POOL'] %>
+
+development:
+  <<: *default
+  database: <%= ENV['POSTGRES_DB'] %>
+
+# test:
+#   <<: *default
+#   database: wellness_test
+
+# production:
+#   <<: *default
+#   database: wellness_production
