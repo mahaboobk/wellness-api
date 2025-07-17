@@ -14,28 +14,41 @@ class AppointmentsController < ApplicationController
   end
 
   # POST /appointments
-  def create
-    @appointment = Appointment.new(appointment_params)
-
-    if @appointment.save
-      render json: @appointment, status: :created, location: @appointment
-    else
-      render json: @appointment.errors, status: :unprocessable_entity
-    end
+def create
+  @appointment = Appointment.new(appointment_params)
+  if @appointment.save
+    ActionCable.server.broadcast("appointments", {
+      action: "create",
+      data: @appointment.as_json
+    })
+    render json: @appointment, status: :created
+  else
+    render json: @appointment.errors, status: :unprocessable_entity
   end
+end
 
-  # PATCH/PUT /appointments/1
+
+
+  # PATCH/PUT /appointments/:id
   def update
     if @appointment.update(appointment_params)
-      render json: @appointment
+      # Broadcast updated appointment to ActionCable subscribers
+      ActionCable.server.broadcast("appointments", {
+        action: "update",
+        data: @appointment.as_json
+      })
+
+      render json: @appointment, status: :ok
     else
       render json: @appointment.errors, status: :unprocessable_entity
     end
   end
+
 
   # DELETE /appointments/1
   def destroy
     @appointment.destroy!
+    ActionCable.server.broadcast("appointments", { action: "destroy", data: @appointment })
   end
 
   private

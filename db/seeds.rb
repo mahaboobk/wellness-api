@@ -7,7 +7,8 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
-Client.create(name: "Samina", email: "samina@example.com", phone: "987987987")
+# Client.destroy_all
+Client.create(name: "Minhaj", email: "minhaj@example.com", phone: "987987987")
 # Appointment.create(client_id: 1, time: Time.now + 3.days)
 # Clear old data
 # Appointment.destroy_all
