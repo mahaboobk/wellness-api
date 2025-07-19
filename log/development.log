@@ -38403,3 +38403,15 @@ Completed 204 No Content in 40ms (ActiveRecord: 9.2ms (2 queries, 0 cached) | GC
 
 
 AppointmentChannel transmitting {"action" => "destroy", "data" => {"id" => 72}} (via streamed from appointments)
+[dotenv] Set [36mPOSTGRES_DB[0m, [36mPOSTGRES_HOST[0m, [36mPOSTGRES_PASSWORD[0m, [36mPOSTGRES_POOL[0m, [36mPOSTGRES_PORT[0m, [36mPOSTGRES_USER[0m, [36mREDIS_DB[0m, [36mREDIS_HOST[0m, and [36mREDIS_PORT[0m
+[dotenv] Loaded [33m.env[0m
+[ActionCable] Broadcasting to appointments: {action: "test", data: {hello: "world"}}
+[ActionCable] Broadcasting to appointments: {action: "test", data: {hello: "world"}}
+[ActionCable] Broadcasting to appointments: {action: "test", data: {hello: "world"}}
+[ActionCable] Broadcasting to appointments: {action: "test", data: {hello: "world"}}
+[ActionCable] Broadcasting to appointments: {action: "test", data: {hello: "world"}}
+[ActionCable] Broadcasting to appointments: {action: "test", data: {hello: "world"}}
+[dotenv] Set [36mPOSTGRES_DB[0m, [36mPOSTGRES_HOST[0m, [36mPOSTGRES_PASSWORD[0m, [36mPOSTGRES_POOL[0m, [36mPOSTGRES_PORT[0m, [36mPOSTGRES_USER[0m, [36mREDIS_DB[0m, [36mREDIS_HOST[0m, and [36mREDIS_PORT[0m
+[dotenv] Loaded [33m.env[0m
+[ActionCable] Broadcasting to appointments: {action: "test", data: {hello: "world"}}
+[ActionCable] Broadcasting to appointments: {action: "test", data: {hello: "world"}}
