@@ -8,18 +8,32 @@
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
 # Client.destroy_all
-Client.create(name: "Minhaj", email: "minhaj@example.com", phone: "987987987")
-# Appointment.create(client_id: 1, time: Time.now + 3.days)
-# Clear old data
-# Appointment.destroy_all
-# Client.destroy_all
+
+Appointment.destroy_all
+Client.destroy_all
+# Client.create(name: "Hussain", email: "hussain@example.com", phone: "987987987")
+# Client.create(name: "Samina", email: "samina@example.com", phone: "987987987")
+# Client.create(name: "Asia", email: "asia@example.com", phone: "987987987")
+
+# Appointment.find(62).client_id == Client.find(62).id
+
 
 # Create Clients
-# client1 = Client.create!(name: "Mahaboob", email: "mahaboob@example.com", phone: "9876543210")
-# client2 = Client.create!(name: "Hussain", email: "abdullah@example.com", phone: "8765432109")
+# Create Clients
+clients = Client.create!([
+  { name: "Mahaboob", email: "mahaboob@example.com", phone: "9876543210" },
+  { name: "Aisha", email: "aisha@example.com", phone: "9123456780" },
+  { name: "Farhan", email: "farhan@example.com", phone: "9988776655" }
+])
 
-# # Create Appointments
-# client1.appointments.create!(time: "2025-07-15T10:00:00Z")
-# client2.appointments.create!(time: "2025-07-15T10:00:00Z")
+# Create Appointments for each client
+clients.each_with_index do |client, index|
+  Appointment.create!(
+    client: client,
+    time: Time.current + (index + 1).days
+  )
+end
+
+puts "✅ Seeded #{Client.count} clients and #{Appointment.count} appointments!"
 
 puts "Seeded #{Client.count} clients and #{Appointment.count} appointments"

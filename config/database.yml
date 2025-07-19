@@ -1,15 +1,18 @@
 default: &default
   adapter: postgresql
   encoding: unicode
-  username: <%= ENV['POSTGRES_USER'] %>
-  password: <%= ENV['POSTGRES_PASSWORD'] %>
-  host: <%= ENV['POSTGRES_HOST'] %>  # <--- this must match the container name or service name in docker-compose
+  username: postgres
+  password: secret
+  # password: wellness
+  # host: 127.0.0.1  # <-- 127.0.0.1 for local 
+  host: db  # <-- this must match the container name or service name in docker-compose
   port: 5432
-  pool: <%= ENV['POSTGRES_POOL'] %>
+  pool: 5
 
 development:
   <<: *default
-  database: <%= ENV['POSTGRES_DB'] %>
+  database: wellnessdatabase # wellness for Docker
+  # database: wellness # wellness for local
 
 # test:
 #   <<: *default

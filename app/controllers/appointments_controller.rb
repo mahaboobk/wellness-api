@@ -19,7 +19,11 @@ def create
   if @appointment.save
     ActionCable.server.broadcast("appointments", {
       action: "create",
-      data: @appointment.as_json
+      data: {
+        id: @appointment.id,
+        client_id: @appointment.client_id,
+        time: @appointment.time.iso8601
+      }
     })
     render json: @appointment, status: :created
   else
@@ -35,7 +39,11 @@ end
       # Broadcast updated appointment to ActionCable subscribers
       ActionCable.server.broadcast("appointments", {
         action: "update",
-        data: @appointment.as_json
+        data: {
+          id: @appointment.id,
+          client_id: @appointment.client_id,
+          time: @appointment.time.iso8601
+        }
       })
 
       render json: @appointment, status: :ok
@@ -48,7 +56,14 @@ end
   # DELETE /appointments/1
   def destroy
     @appointment.destroy!
-    ActionCable.server.broadcast("appointments", { action: "destroy", data: @appointment })
+    begin
+      ActionCable.server.broadcast("appointments", {
+        action: "destroy",
+        data: { id: @appointment.id }
+      })
+    rescue => e
+      Rails.logger.error("Broadcast failed: #{e.message}")
+    end
   end
 
   private
