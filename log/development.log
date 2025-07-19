@@ -38415,3 +38415,4 @@ AppointmentChannel transmitting {"action" => "destroy", "data" => {"id" => 72}} 
 [dotenv] Loaded [33m.env[0m
 [ActionCable] Broadcasting to appointments: {action: "test", data: {hello: "world"}}
 [ActionCable] Broadcasting to appointments: {action: "test", data: {hello: "world"}}
+[ActionCable] Broadcasting to appointments: {action: "test", data: {hello: "world"}}
