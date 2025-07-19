@@ -23,7 +23,10 @@ Client.destroy_all
 clients = Client.create!([
   { name: "Mahaboob", email: "mahaboob@example.com", phone: "9876543210" },
   { name: "Aisha", email: "aisha@example.com", phone: "9123456780" },
-  { name: "Farhan", email: "farhan@example.com", phone: "9988776655" }
+  { name: "Farhan", email: "farhan@example.com", phone: "9988776655" },
+  { name: "Zara", email: "zara@example.com", phone: "9876543210" },
+  { name: "Roshan", email: "roshan@example.com", phone: "9123456780" },
+  { name: "Nadia", email: "nadia@example.com", phone: "9988776655" }
 ])
 
 # Create Appointments for each client
