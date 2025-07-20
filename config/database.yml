@@ -101,6 +101,6 @@ test:
 #     migrations_paths: db/cable_migrate
 production:
   <<: *default
-  database: render_production
-  username: render
+  database: wellness_database_0dn7
+  username: wellness_database_0dn7_user
   password: <%= ENV["RENDER_DATABASE_PASSWORD"] %>
