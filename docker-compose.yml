@@ -1,0 +1,39 @@
+version: '3.8'
+
+services:
+  redis:
+    image: redis:latest
+    container_name: wellness-redis
+    restart: unless-stopped
+    ports:
+      - "6379:6379"
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 5
+
+  backend:
+    build:
+      context: ./wellness-api
+    container_name: wellness-api
+    restart: unless-stopped
+    depends_on:
+      redis:
+        condition: service_healthy
+    environment:
+      DB_HOST: wellnessdatabase-instance-1.c3k886y44ign.ap-south-1.rds.amazonaws.com
+      DB_USERNAME: postgres
+      DB_PASSWORD: postgress
+      DB_NAME: wellnessdatabase
+      REDIS_URL: redis://redis:6379/1
+      RAILS_ENV: development
+    volumes:
+      - ./wellness-api:/app
+    ports:
+      - "3000:3000"
+    command: >
+      bash -c "
+        bundle exec rails db:prepare &&
+        bundle exec rails db:seed &&
+        exec rails server -b 0.0.0.0"

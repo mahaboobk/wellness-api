@@ -219,10 +219,6 @@ GEM
     rdoc (6.14.2)
       erb
       psych (>= 4.0.0)
-    redis (5.4.0)
-      redis-client (>= 0.22.0)
-    redis-client (0.25.1)
-      connection_pool
     regexp_parser (2.10.0)
     reline (0.6.1)
       io-console (~> 0.5)
@@ -307,13 +303,12 @@ DEPENDENCIES
   bootsnap
   brakeman
   debug
-  dotenv-rails (~> 3.1)
+  dotenv-rails
   kamal
   pg (~> 1.1)
   puma (>= 5.0)
-  rack-cors (~> 3.0)
+  rack-cors
   rails (~> 8.0.2)
-  redis
   rubocop-rails-omakase
   solid_cable
   solid_cache
