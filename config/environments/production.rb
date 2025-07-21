@@ -75,9 +75,7 @@ Rails.application.configure do
 
   # Only use :id for inspections in production.
   config.active_record.attributes_for_inspect = [ :id ]
-  config.action_cable.allowed_request_origins = [
-  'http://13.203.79.111:5173', # your AWS frontend IP
-  ]
+  config.action_cable.allowed_request_origins = 'http://13.203.79.111:5173', # your AWS frontend IP
 
   # Enable DNS rebinding protection and other `Host` header attacks.
   # config.hosts = [
