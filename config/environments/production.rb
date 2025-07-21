@@ -25,7 +25,7 @@ Rails.application.configure do
   config.assume_ssl = true
 
   # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
-  config.force_ssl = true
+  # config.force_ssl = true // Disalbling for teting..
 
   # Skip http-to-https redirect for the default health check endpoint.
   # config.ssl_options = { redirect: { exclude: ->(request) { request.path == "/up" } } }
@@ -45,8 +45,11 @@ Rails.application.configure do
 
   # Replace the default in-process memory cache store with a durable alternative.
   # config.cache_store = :solid_cache_store
-  # config.cache_store = :redis_cache_store, { url: ENV['REDIS_URL'] }
-  config.cache_store = :redis_cache_store, { url: 'redis://red-d1uv83mr433s73f5n0fg:6379' }
+  # config.cache_store = :redis_cache_store, { url: ENV['REDIS_URL'], }
+  config.cache_store = :redis_cache_store, { url: 'redis://red-d1uv83mr433s73f5n0fg:6379', error_handler: -> (method:, returning:, exception:) {
+    Rails.logger.error "Redis cache error: #{exception}"
+  }
+ }
   # Replace the default in-process and non-durable queuing backend for Active Job.
   config.active_job.queue_adapter = :solid_queue
   config.solid_queue.connects_to = { database: { writing: :queue } }

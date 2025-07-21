@@ -103,4 +103,6 @@ production:
   <<: *default
   database: wellness_database_0dn7
   username: wellness_database_0dn7_user
+  url: <%= ENV['DATABASE_URL'] %>
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   password: <%= ENV["RENDER_DATABASE_PASSWORD"] %>
