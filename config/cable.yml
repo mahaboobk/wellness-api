@@ -6,8 +6,8 @@
 #   adapter: async
 development:
   adapter: redis
-  url: <%= ENV['REDIS_URL'] || 'redis://localhost:6379/1' %>
-
+  url: <%= ENV['REDIS_URL'] || 'redis://red-d1uv83mr433s73f5n0fg:6379/1' %>
+  
 production:
   adapter: solid_cable
   connects_to:
@@ -17,4 +17,5 @@ production:
   message_retention: 1.day
 production:
   adapter: redis
-  url: <%= ENV['REDIS_URL'] || 'redis://localhost:6379/1' %>
+  url: <%= ENV['REDIS_URL'] || 'redis://red-d1uv83mr433s73f5n0fg:6379/1' %>
+  channel_prefix: wellness_api_production

@@ -45,7 +45,8 @@ Rails.application.configure do
 
   # Replace the default in-process memory cache store with a durable alternative.
   # config.cache_store = :solid_cache_store
-    config.cache_store = :redis_cache_store, { url: ENV['REDIS_URL'] }
+  # config.cache_store = :redis_cache_store, { url: ENV['REDIS_URL'] }
+  config.cache_store = :redis_cache_store, { url: 'redis://red-d1uv83mr433s73f5n0fg:6379' }
   # Replace the default in-process and non-durable queuing backend for Active Job.
   config.active_job.queue_adapter = :solid_queue
   config.solid_queue.connects_to = { database: { writing: :queue } }
@@ -75,7 +76,12 @@ Rails.application.configure do
 
   # Only use :id for inspections in production.
   config.active_record.attributes_for_inspect = [ :id ]
-  config.action_cable.allowed_request_origins = 'http://13.203.79.111:5173', # your AWS frontend IP
+  config.action_cable.url = 'wss://wellness-api-rotv.onrender.com/cable'
+  config.action_cable.allowed_request_origins = [
+    'http://localhost:5173',
+    'http://localhost:4173',
+    'http://13.203.79.111:5173'
+  ]
 
   # Enable DNS rebinding protection and other `Host` header attacks.
   # config.hosts = [
