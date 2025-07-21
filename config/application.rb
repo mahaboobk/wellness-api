@@ -12,7 +12,7 @@ module WellnessApi
     config.load_defaults 8.0
     config.middleware.insert_before 0, Rack::Cors do
       allow do
-        origins 'http://13.203.79.111'  # or use '*' for development
+        origins 'http://13.203.79.111:5173'  # or use '*' for development
         resource '*',
           headers: :any,
           methods: [:get, :post, :put, :patch, :delete, :options, :head],
