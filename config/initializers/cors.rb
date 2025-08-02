@@ -7,7 +7,7 @@
 
 Rails.application.config.middleware.insert_before 0, Rack::Cors do
   allow do
-    origins 'http://13.203.79.111:5173','http://localhost:4173','http://localhost:5173','https://wellness-ui-8m89.onrender.com/'
+    origins 'http://13.203.79.111:5173','http://localhost:4173','http://localhost:5173','https://wellness-ui-8m89.onrender.com'
     resource '*',
       headers: :any,
       methods: [:get, :post, :put, :patch, :delete, :options, :head],
