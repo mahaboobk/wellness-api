@@ -84,7 +84,7 @@ Rails.application.configure do
     'http://localhost:5173',
     'http://localhost:4173',
     'http://13.203.79.111:5173',
-    'https://wellness-ui-8m89.onrender.com/'
+    'https://wellness-ui-8m89.onrender.com'
   ]
 
   # Enable DNS rebinding protection and other `Host` header attacks.
